@@ -102,11 +102,13 @@ const TemplateInfoForm = () => {
                     filename = decodeURIComponent(filename.replace("utf-8''", ''));
                 else
                     filename = filename.replace(/['"]/g, '');
-                const url = window.URL.createObjectURL(new Blob([response.data]));
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', filename);
-                link.click();
+                const url = window.URL.createObjectURL(response.data);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a); // append the element to the dom
+                a.click();
+                a.remove();
                 projectGeneratedSuccess()
             } else {
                 console.log(response.data.message);
