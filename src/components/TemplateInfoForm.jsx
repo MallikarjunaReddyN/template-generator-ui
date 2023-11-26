@@ -92,13 +92,20 @@ const TemplateInfoForm = () => {
     const generteProject = () => {
         axios.post("https://template-generator.onrender.com/template-generator/v1/templategenerator/generate-project",
             formData,
+            {responseType: 'blob'}
         ).then((response) => {
             console.log(response);
             if (response.status === 200) {
+                const disposition = response.headers['content-disposition'];
+                filename = disposition.split(/;(.+)/)[1].split(/=(.+)/)[1];
+                if (filename.toLowerCase().startsWith("utf-8''"))
+                    filename = decodeURIComponent(filename.replace("utf-8''", ''));
+                else
+                    filename = filename.replace(/['"]/g, '');
                 const url = window.URL.createObjectURL(new Blob([response.data]));
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', formData.project_name.toLowerCase().replace(" ", "-") + ".zip");
+                link.setAttribute('download', filename);
                 link.click();
                 projectGeneratedSuccess()
             } else {
