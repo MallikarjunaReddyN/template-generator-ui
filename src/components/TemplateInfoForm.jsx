@@ -90,7 +90,7 @@ const TemplateInfoForm = () => {
     const projectGeneratedError = (errorMsg) => toast.error(errorMsg);
 
     const generteProject = () => {
-        axios.post("http://localhost:3662/template-generator/v1/templategenerator/generate-project",
+        axios.post("https://template-generator.onrender.com/template-generator/v1/templategenerator/generate-project",
             formData,
         ).then((response) => {
             console.log(response);
