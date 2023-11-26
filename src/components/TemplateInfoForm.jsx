@@ -86,7 +86,7 @@ const TemplateInfoForm = () => {
         });
     };
 
-    const projectGeneratedSuccess = () => toast.info(`Your project ${formData.project_name} created successfully!`);
+    const projectGeneratedSuccess = () => toast.success(`Your project ${formData.project_name} created successfully!`);
     const projectGeneratedError = (errorMsg) => toast.error(errorMsg);
 
     const generteProject = () => {
@@ -150,7 +150,7 @@ const TemplateInfoForm = () => {
             validationErrors.project_name = 'Project name is required.';
         }
         if (!formData.is_db_required.trim()) {
-            validationErrors.is_db_required = 'Group Id is required.';
+            validationErrors.is_db_required = 'Please';
         }
         if (!formData.group_id.trim()) {
             validationErrors.group_id = 'Group Id is required.';
@@ -203,7 +203,7 @@ const TemplateInfoForm = () => {
 
                     <TextInput label="Project description" name="project_description" value={formData.project_description} placeholder="Optional. This is a Spring Boot Example project" error={errors.project_description} handleChange={handleChange} />
 
-                    <Dropdown options={yesOrNoOptions} disable={false} label="Do you want database for your project" name="is_db_required" value={formData.is_db_required} error={errors.is_db_required} handleChange={handleChange} />
+                    <Dropdown options={yesOrNoOptions} disable={false} label="Do you want database for your project?" name="is_db_required" value={formData.is_db_required} error={errors.is_db_required} handleChange={handleChange} />
 
                     <Dropdown options={dbTypeOptions} disable={formData.is_db_required == '' || formData.is_db_required == 'No'} label="Which database do you want?" name="db" value={formData.db} error={errors.db} handleChange={handleChange} />
 
@@ -227,7 +227,7 @@ const TemplateInfoForm = () => {
                     <TextInput label="Project creator name" name="created_by" value={formData.created_by} placeholder="Enter the project creator name" error={errors.created_by} handleChange={handleChange} />
                 </div>
             </div>
-            <div className='ml-[515px] mt-[15px]'>
+            <div className='ml-[515px] mt-[45px]'>
                 <button className='btn-primary' type="submit">Generate Project</button>
             </div>
         </form>
