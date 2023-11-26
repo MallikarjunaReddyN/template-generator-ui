@@ -5,7 +5,7 @@ const TextInput = ({label, disable, name, value, placeholder, error, handleChang
   
   return (
     <div className="mb-4">
-      <label htmlFor={name} className="block text-sm text-left font-bold mb-2 ml-[95px]">
+      <label htmlFor={name} className="block text-sm text-left font-bold mb-2">
         {label}
       </label> 
       <input

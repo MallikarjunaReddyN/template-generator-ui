@@ -4,7 +4,7 @@ const Dropdown = ({options, disable, label, name, value, error, handleChange}) =
 
   return (
     <div className="mb-4">
-    <label htmlFor={name} className="block text-sm text-left font-bold mb-2 ml-[95px]">
+    <label htmlFor={name} className="block text-sm text-left font-bold mb-2">
       {label}
     </label> 
 

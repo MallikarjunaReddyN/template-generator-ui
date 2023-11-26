@@ -3,7 +3,7 @@ import React from 'react';
 const InputField = ({ label, name, value, placeholder, error, handleChange, disable, required }) => {
     return (
         <div className="mb-4">
-            <label htmlFor={name} className="block text-sm text-left font-bold leading-6 text-gray-900 ml-[105px]">
+            <label htmlFor={name} className="block text-sm text-left font-bold leading-6 text-gray-900">
                 {label}{required && <p className='inline-block text-sm font-bold text-red-900'>*</p>}
             </label>
             <div className="mt-2">
