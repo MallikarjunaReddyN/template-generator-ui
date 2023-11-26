@@ -132,7 +132,7 @@ const TemplateForm = () => {
     const clearData = () => {
         setGroupId(''); setProjectName(''); setServerPort(''); setVersion(''); setProjectDesc(''); setIsDbRequired(yesOrNoOptions[0].value);
         setDbType(''); setDbName(''); setSca(yesOrNoOptions[0].value); setScaType(''); setDocker(yesOrNoOptions[0].value); setRegistry('');
-        setCi(yesOrNoOptions[0].value); setCiType(''); setAks(''); setCiType('');
+        setCi(yesOrNoOptions[0].value); setCiType(''); setAks(''); setCreatedBy();
     }
     const generteProject = (formData) => {
         setIsLoading(true);
@@ -251,6 +251,7 @@ const TemplateForm = () => {
                     <InputField label="Enter the project creator name" name="created_by" value={createdBy} placeholder="Jhon" error={errors.created_by} handleChange={handleChange} disable={false} required={true} />
                 </div>
             </div>
+            <hr />
             <div className="mt-6 flex items-center justify-end gap-x-6">
                 <button type="button" onClick={clearData} className="text-sm font-semibold leading-6 text-gray-900">
                     Cancel
