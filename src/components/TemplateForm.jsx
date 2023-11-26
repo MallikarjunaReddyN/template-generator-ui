@@ -34,7 +34,6 @@ const TemplateForm = () => {
     const [groupId, setGroupId] = useState('');
     const [projectName, setProjectName] = useState('');
     const [serverPort, setServerPort] = useState('');
-    const [version, setVersion] = useState('');
     const [projectDesc, setProjectDesc] = useState('');
     const [isDbRequired, setIsDbRequired] = useState(yesOrNoOptions[0].value);
     const [dbType, setDbType] = useState('');
@@ -65,10 +64,6 @@ const TemplateForm = () => {
         if (name === 'server_port') {
             delete errors.server_port;
             setServerPort(value);
-        }
-        if (name === 'version') {
-            delete errors.version;
-            setVersion(value);
         }
         if (name === 'project_description') {
             delete errors.project_description;
@@ -130,7 +125,7 @@ const TemplateForm = () => {
     const projectGeneratedError = (errorMsg) => toast.error(errorMsg);
 
     const clearData = () => {
-        setGroupId(''); setProjectName(''); setServerPort(''); setVersion(''); setProjectDesc(''); setIsDbRequired(yesOrNoOptions[0].value);
+        setGroupId(''); setProjectName(''); setServerPort(''); setProjectDesc(''); setIsDbRequired(yesOrNoOptions[0].value);
         setDbType(''); setDbName(''); setSca(yesOrNoOptions[0].value); setScaType(''); setDocker(yesOrNoOptions[0].value); setRegistry('');
         setCi(yesOrNoOptions[0].value); setCiType(''); setAks(''); setCreatedBy();
     }
@@ -191,7 +186,6 @@ const TemplateForm = () => {
                 group_id: groupId,
                 project_name: projectName,
                 server_port: serverPort,
-                version: version,
                 project_description: projectDesc,
                 is_db_required: isDbRequired,
                 db: dbType,
@@ -234,7 +228,6 @@ const TemplateForm = () => {
                     <InputField label="Group ID" name="group_id" value={groupId} placeholder="org.springframework.boot" error={errors?.group_id} handleChange={handleChange} disable={false} required={true} />
                     <InputField label="Project name" name="project_name" value={projectName} placeholder="Example Service" error={errors?.project_name} handleChange={handleChange} disable={false} required={true} />
                     <InputField label="Server port" name="server_port" value={serverPort} placeholder="Optional. Ex: 8080" error={errors?.server_port} handleChange={handleChange} disable={false} required={false} />
-                    <InputField label="Version" name="version" value={version} placeholder="Optional. Ex: 0.0.1 or 1.0.0" error={errors?.version} handleChange={handleChange} disable={false} required={false} />
                     <InputField label="Project description" name="project_description" value={projectDesc} placeholder="Optional. This is a Spring Boot Example project" error={errors.project_description} handleChange={handleChange} disable={false} required={false} />
                     <RadioInput label="Do you want database for your project?" name='is_db_required' options={yesOrNoOptions} handleChange={handleChange} disable={false} />
                     <RadioInput label="Which database do you want?" name="db" options={dbTypeOptions} handleChange={handleChange} disable={isDbRequired == '' || isDbRequired == 'No'} />
