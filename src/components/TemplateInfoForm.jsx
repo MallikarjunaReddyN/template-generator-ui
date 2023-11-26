@@ -97,7 +97,7 @@ const TemplateInfoForm = () => {
             console.log(response);
             if (response.status === 200) {
                 const disposition = response.headers['content-disposition'];
-                filename = disposition.split(/;(.+)/)[1].split(/=(.+)/)[1];
+                let filename = disposition.split(/;(.+)/)[1].split(/=(.+)/)[1];
                 if (filename.toLowerCase().startsWith("utf-8''"))
                     filename = decodeURIComponent(filename.replace("utf-8''", ''));
                 else
@@ -111,7 +111,7 @@ const TemplateInfoForm = () => {
                 a.remove();
                 projectGeneratedSuccess()
             } else {
-                console.log(response.data.message);
+                console.log(response.data);
                 projectGeneratedError(response.data)
             }
             setFormData(initialData);
