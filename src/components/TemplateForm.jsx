@@ -160,13 +160,13 @@ const TemplateForm = () => {
                 a.click();
                 a.remove();
                 projectGeneratedSuccess();
-                clearData();
+                //clearData();
             } else {
                 console.log(response.data);
                 projectGeneratedError(response.data)
-                clearData();
+                //clearData();
             }
-            clearData();
+            //clearData();
             setErrors({});
             setIsLoading(false);
         }).catch((error) => {
@@ -178,7 +178,7 @@ const TemplateForm = () => {
                 projectGeneratedError(text);
             });
             reader.readAsText(blb);
-            clearData();
+            //clearData();
             setErrors({});
             setIsLoading(false);
         });
@@ -259,7 +259,7 @@ const TemplateForm = () => {
             </div>
             <hr />
             <div className="mt-6 flex items-center justify-end gap-x-6">
-                <button type="button" onClick={clearData} className="text-sm font-semibold leading-6 text-gray-900">
+                <button type="button" onClick={clearData} className="hidden text-sm font-semibold leading-6 text-gray-900">
                     Cancel
                 </button>
                 <button
