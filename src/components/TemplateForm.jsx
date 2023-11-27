@@ -4,6 +4,11 @@ import RadioInput from './RadioInput';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const projectOptions = [
+    { value: 'Maven', label: 'Maven', checked: true },
+    { value: 'Gradle', label: 'Gradle', checked: false },
+];
+
 const yesOrNoOptions = [
     { value: 'No', label: 'No', checked: true },
     { value: 'Yes', label: 'Yes', checked: false },
@@ -31,6 +36,7 @@ const ciOptions = [
 
 
 const TemplateForm = () => {
+    const [project, setProject] = useState(projectOptions[0].value);
     const [groupId, setGroupId] = useState('');
     const [projectName, setProjectName] = useState('');
     const [serverPort, setServerPort] = useState('');
@@ -53,6 +59,9 @@ const TemplateForm = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        if (name === 'project') {
+            setProject(value);
+        }
         if (name === 'group_id') {
             delete errors.group_id;
             setGroupId(value);
@@ -125,7 +134,7 @@ const TemplateForm = () => {
     const projectGeneratedError = (errorMsg) => toast.error(errorMsg);
 
     const clearData = () => {
-        setGroupId(''); setProjectName(''); setServerPort(''); setProjectDesc(''); setIsDbRequired(yesOrNoOptions[0].value);
+        setProject(projectOptions[0].value); setGroupId(''); setProjectName(''); setServerPort(''); setProjectDesc(''); setIsDbRequired(yesOrNoOptions[0].value);
         setDbType(''); setDbName(''); setSca(yesOrNoOptions[0].value); setScaType(''); setDocker(yesOrNoOptions[0].value); setRegistry('');
         setCi(yesOrNoOptions[0].value); setCiType(''); setAks(''); setCreatedBy();
     }
@@ -183,6 +192,7 @@ const TemplateForm = () => {
         if (JSON.stringify(validationErrors) === '{}') {
             console.log('Form submitted successfully!');
             const formData = {
+                project: project,
                 group_id: groupId,
                 project_name: projectName,
                 server_port: serverPort,
@@ -223,8 +233,9 @@ const TemplateForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className='grid grid-cols-2'>
+            <div className='grid md:grid-cols-2'>
                 <div>
+                    <RadioInput label="Project" name='project' options={projectOptions} handleChange={handleChange} disable={false} />
                     <InputField label="Group ID" name="group_id" value={groupId} placeholder="org.springframework.boot" error={errors?.group_id} handleChange={handleChange} disable={false} required={true} />
                     <InputField label="Project name" name="project_name" value={projectName} placeholder="Example Service" error={errors?.project_name} handleChange={handleChange} disable={false} required={true} />
                     <InputField label="Server port" name="server_port" value={serverPort} placeholder="Optional. Ex: 8080" error={errors?.server_port} handleChange={handleChange} disable={false} required={false} />

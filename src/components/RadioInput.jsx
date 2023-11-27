@@ -2,7 +2,7 @@ import { Radio, Typography } from "@material-tailwind/react";
 
 const RadioInput = ({label, name,  options, handleChange, disable}) => {
     return (
-        <div className="mb-4">
+        <div className="mb-3">
             <legend className="text-sm text-left font-bold leading-6 text-gray-900">{label}</legend>
             <div className="flex gap-10">
                 {
