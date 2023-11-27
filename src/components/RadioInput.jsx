@@ -1,3 +1,4 @@
+import React from 'react';
 import { Radio, Typography } from "@material-tailwind/react";
 
 const RadioInput = ({label, name,  options, handleChange, disable}) => {
@@ -15,4 +16,4 @@ const RadioInput = ({label, name,  options, handleChange, disable}) => {
     );
 };
 
-export default RadioInput;
+export default React.memo(RadioInput);
