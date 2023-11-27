@@ -160,9 +160,11 @@ const TemplateForm = () => {
                 a.click();
                 a.remove();
                 projectGeneratedSuccess();
+                clearData();
             } else {
                 console.log(response.data);
                 projectGeneratedError(response.data)
+                clearData();
             }
             clearData();
             setErrors({});
