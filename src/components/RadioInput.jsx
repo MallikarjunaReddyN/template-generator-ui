@@ -8,7 +8,7 @@ const RadioInput = ({label, name, value, options, handleChange, disable}) => {
             <div className="flex gap-10">
                 {
                     options.map(option => (
-                        <Radio key={option.label} name={name} label={<Typography className="font-bold">{option.label}</Typography>} value={value} color="indigo"  onChange={handleChange} defaultChecked={option.checked} disabled={disable} />
+                        <Radio key={option.label} name={name} label={<Typography className="font-bold">{option.label}</Typography>} value={option.value} color="indigo"  onChange={handleChange} defaultChecked={option.checked} disabled={disable} />
                     ))
                 }
             </div>
