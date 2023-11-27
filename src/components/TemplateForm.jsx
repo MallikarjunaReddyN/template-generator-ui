@@ -218,10 +218,10 @@ const TemplateForm = () => {
 
     const validateForm = () => {
         let validationErrors = {};
-        const groupIdRegex = /^[a-z]+(\\.[a-z][a-z0-9]*)*$/;
+        const groupIdRegex = /^[a-z]+(\.[a-z][a-z0-9]*)*$/;
         const numberRegex = /^\d{4}$/;
-        const projectNameRegex = /^[A-Za-z][A-Za-z\\s]*$/;
-        const dbNameRegex = /^[a-z]+([a-z0-9\\_-]*)*$/;
+        const projectNameRegex = /^[A-Za-z][A-Za-z\s]*$/;
+        const dbNameRegex = /^[a-z]+([a-z0-9\_-]*)*$/;
 
         if (groupId === '' || !groupIdRegex.test(groupId)) validationErrors.group_id = 'Group Id is required or invalid.';
         if (projectName === '' || !projectNameRegex.test(projectName)) validationErrors.project_name = 'Project Name is required or invalid.';
