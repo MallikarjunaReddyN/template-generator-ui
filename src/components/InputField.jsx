@@ -16,7 +16,7 @@ const InputField = ({ label, name, value, placeholder, error, handleChange, disa
                     onChange={handleChange}
                     placeholder={placeholder}
                     disabled={disable}
-                    className={`w-2/3 rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 ${error && 'ring-2 ring-inset ring-red-500' }` }
+                    className={`w-full md:w-2/3 rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 ${error && 'ring-2 ring-inset ring-red-500' }` }
                 />
             </div>
         </div>
