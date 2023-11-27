@@ -223,8 +223,8 @@ const TemplateForm = () => {
         const projectNameRegex = /^[A-Za-z][A-Za-z\\s]*$/;
         const dbNameRegex = /^[a-z]+([a-z0-9\\_-]*)*$/;
 
-        if (groupId === '' || groupIdRegex.test(groupId)) validationErrors.group_id = 'Group Id is required or invalid.';
-        if (projectName === '' || projectNameRegex.test(projectName)) validationErrors.project_name = 'Project Name is required or invalid.';
+        if (groupId === '' || !groupIdRegex.test(groupId)) validationErrors.group_id = 'Group Id is required or invalid.';
+        if (projectName === '' || !projectNameRegex.test(projectName)) validationErrors.project_name = 'Project Name is required or invalid.';
         if (serverPort !== '' && !numberRegex.test(serverPort)) validationErrors.server_port = 'Invalid server port.';
         if (dbName !== '' && !dbNameRegex.test(dbName)) validationErrors.db_name = 'DB name is invalid.';
         if (createdBy == '') validationErrors.created_by = 'Creator name is required.';
