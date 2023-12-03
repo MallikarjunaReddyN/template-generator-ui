@@ -89,6 +89,9 @@ const TemplateForm = () => {
                 setDbName('');
             }
         }
+        if (name === 'db') {
+            setDbType(value);
+        }
         if (name === 'db_name') {
             delete errors.db_name;
             setDbName(value);
@@ -100,6 +103,9 @@ const TemplateForm = () => {
             } else {
                 setScaType('');
             }
+        }
+        if (name === 'sca_type') {
+            setScaType(value);
         }
         if (name === 'docker') {
             setDocker(value);
