@@ -17,6 +17,7 @@ const yesOrNoOptions = [
 const dbTypeOptions = [
     { value: 'MySQL', label: 'MySQL', checked: true },
     { value: 'PostgreSQL', label: 'PostgreSQL', checked: false },
+    { value: 'MongoDB', label: 'MongoDB', checked: false },
 ];
 
 const scaOptions = [
