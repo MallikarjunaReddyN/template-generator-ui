@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import InputField from './InputField';
 import RadioInput from './RadioInput';
 import axios from 'axios';
@@ -228,7 +228,7 @@ const TemplateForm = () => {
         const groupIdRegex = /^[a-z]+(\.[a-z][a-z0-9]*)*$/;
         const numberRegex = /^\d{4}$/;
         const projectNameRegex = /^[A-Za-z][A-Za-z\s]*$/;
-        const dbNameRegex = /^[a-z]+([a-z0-9\_-]*)*$/;
+        const dbNameRegex = /^[a-z]+([a-z0-9_-]*)*$/;
 
         if (groupId === '' || !groupIdRegex.test(groupId)) validationErrors.group_id = 'Group Id is required or invalid.';
         if (projectName === '' || !projectNameRegex.test(projectName)) validationErrors.project_name = 'Project Name is required or invalid.';
