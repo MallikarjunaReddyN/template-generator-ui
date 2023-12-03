@@ -23,4 +23,4 @@ const InputField = ({ label, name, value, placeholder, error, handleChange, disa
     );
 };
 
-export default InputField;
+export default React.memo(InputField);

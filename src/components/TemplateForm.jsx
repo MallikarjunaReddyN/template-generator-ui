@@ -161,13 +161,13 @@ const TemplateForm = () => {
                 a.click();
                 a.remove();
                 projectGeneratedSuccess();
-                clearData();
+                //clearData();
             } else {
                 console.log(response.data);
                 projectGeneratedError(response.data)
-                clearData();
+                //clearData();
             }
-            clearData();
+            //clearData();
             setErrors({});
             setIsLoading(false);
         }).catch((error) => {
@@ -179,7 +179,7 @@ const TemplateForm = () => {
                 projectGeneratedError(text);
             });
             reader.readAsText(blb);
-            clearData();
+            //clearData();
             setErrors({});
             setIsLoading(false);
         });
@@ -238,29 +238,29 @@ const TemplateForm = () => {
         <form onSubmit={handleSubmit}>
             <div className='grid md:grid-cols-2'>
                 <div>
-                    <RadioInput label="Project" name='project' options={projectOptions} handleChange={handleChange} disable={false} />
+                    <RadioInput label="Project" name='project' value={project} options={projectOptions} handleChange={handleChange} disable={false} />
                     <InputField label="Group ID" name="group_id" value={groupId} placeholder="org.springframework.boot" error={errors?.group_id} handleChange={handleChange} disable={false} required={true} />
                     <InputField label="Project name" name="project_name" value={projectName} placeholder="Example Service" error={errors?.project_name} handleChange={handleChange} disable={false} required={true} />
                     <InputField label="Server port" name="server_port" value={serverPort} placeholder="Optional. Ex: 8080" error={errors?.server_port} handleChange={handleChange} disable={false} required={false} />
                     <InputField label="Project description" name="project_description" value={projectDesc} placeholder="Optional. This is a Spring Boot Example project" error={errors.project_description} handleChange={handleChange} disable={false} required={false} />
-                    <RadioInput label="Do you want database for your project?" name='is_db_required' options={yesOrNoOptions} handleChange={handleChange} disable={false} />
-                    <RadioInput label="Which database do you want?" name="db" options={dbTypeOptions} handleChange={handleChange} disable={isDbRequired == '' || isDbRequired == 'No'} />
+                    <RadioInput label="Do you want database for your project?" name='is_db_required' value={isDbRequired} options={yesOrNoOptions} handleChange={handleChange} disable={false} />
+                    <RadioInput label="Which database do you want?" name="db" value={dbType} options={dbTypeOptions} handleChange={handleChange} disable={isDbRequired == '' || isDbRequired == 'No'} />
                     <InputField label="Database name" name="db_name" value={dbName} placeholder="Optional. Ex: example" error={errors.db_name} handleChange={handleChange} disable={isDbRequired == '' || isDbRequired == 'No'} required={false} />
                 </div>
                 <div>
-                    <RadioInput label="Do you want static code analysis for you project?" name="sca" options={yesOrNoOptions} handleChange={handleChange} disable={false} />
-                    <RadioInput label="What static code analysis service do you want to use?" name="sca_type" options={scaOptions} handleChange={handleChange} disable={sca == '' || sca == 'No'} />
-                    <RadioInput label="Do you want dockerize you project?" name="docker" options={yesOrNoOptions} handleChange={handleChange} disable={false} />
-                    <RadioInput label="Which container registery do you want to use?" name="container_registery" options={registeryOptions} handleChange={handleChange} disable={docker == '' || docker == 'No'} />
-                    <RadioInput label="Do you want Continuous Integration for your project?" name="CI" options={yesOrNoOptions} handleChange={handleChange} disable={false} />
-                    <RadioInput label="What Continuous Integration service do you want to use?" name="CI_type" options={ciOptions} handleChange={handleChange} disable={ci == '' || ci == 'No'} />
-                    <RadioInput label="Do you want AKS deployment for your project?" name="aks" options={yesOrNoOptions} handleChange={handleChange} disable={docker == '' || docker == 'No'} />
+                    <RadioInput label="Do you want static code analysis for you project?" name="sca" value={sca} options={yesOrNoOptions} handleChange={handleChange} disable={false} />
+                    <RadioInput label="What static code analysis service do you want to use?" name="sca_type" value={scaType} options={scaOptions} handleChange={handleChange} disable={sca == '' || sca == 'No'} />
+                    <RadioInput label="Do you want dockerize you project?" name="docker" value={docker} options={yesOrNoOptions} handleChange={handleChange} disable={false} />
+                    <RadioInput label="Which container registery do you want to use?" name="container_registery" value={registry} options={registeryOptions} handleChange={handleChange} disable={docker == '' || docker == 'No'} />
+                    <RadioInput label="Do you want Continuous Integration for your project?" name="CI" value={ci} options={yesOrNoOptions} handleChange={handleChange} disable={false} />
+                    <RadioInput label="What Continuous Integration service do you want to use?" name="CI_type" value={ciType} options={ciOptions} handleChange={handleChange} disable={ci == '' || ci == 'No'} />
+                    <RadioInput label="Do you want AKS deployment for your project?" name="aks" value={aks} options={yesOrNoOptions} handleChange={handleChange} disable={docker == '' || docker == 'No'} />
                     <InputField label="Enter the project creator name" name="created_by" value={createdBy} placeholder="Jhon" error={errors.created_by} handleChange={handleChange} disable={false} required={true} />
                 </div>
             </div>
             <hr />
             <div className="mt-6 flex items-center justify-end gap-x-6">
-                <button type="button" onClick={clearData} className="text-sm font-semibold leading-6 text-gray-900">
+                <button type="button" onClick={clearData} className="hidden text-sm font-semibold leading-6 text-gray-900">
                     Cancel
                 </button>
                 <button
