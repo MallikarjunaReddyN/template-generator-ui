@@ -33,6 +33,7 @@ const registeryOptions = [
 const ciOptions = [
     { value: 'Github Actions', label: 'Github Actions', checked: true },
     { value: 'Azure Pipelines', label: 'Azure Pipelines', checked: false },
+    { value: 'Jenkins', label: 'Jenkins', checked: false },
 ];
 
 
