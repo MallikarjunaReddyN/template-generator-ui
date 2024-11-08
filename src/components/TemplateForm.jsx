@@ -148,7 +148,7 @@ const TemplateForm = () => {
     }
     const generteProject = (formData) => {
         setIsLoading(true);
-        axios.post("https://template-generator-api.onrender.com/template-generator/v1/templategenerator/generate-project",
+        axios.post("https://intelligent-reflection-production.up.railway.app/template-generator/v1/templategenerator/generate-project",
             formData,
             { responseType: 'blob' }
         ).then((response) => {
